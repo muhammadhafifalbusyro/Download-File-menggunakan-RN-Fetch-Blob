@@ -9,17 +9,23 @@ export default class App extends React.Component {
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
       const {dirs} = RNFetchBlob.fs;
+      // https://drive.google.com/file/d/1dVlvNImeZMvKAyyijv_9JPhLvqasQbMa/view?usp=sharing
+      //http://www.africau.edu/images/default/sample.pdf
       RNFetchBlob.config({
         fileCache: true,
         addAndroidDownloads: {
           useDownloadManager: true,
           notification: true,
           mediaScannable: true,
-          title: `namas.pdf`,
-          path: `${dirs.DownloadDir}/namas.pdf`,
+          title: `fileza.jpg`,
+          path: `${dirs.DownloadDir}/fileza.jpg`,
         },
       })
-        .fetch('GET', 'http://www.africau.edu/images/default/sample.pdf', {})
+        .fetch(
+          'GET',
+          'https://drive.google.com/uc?export=view&id=1dVlvNImeZMvKAyyijv_9JPhLvqasQbMa',
+          {},
+        )
         .then((res) => {
           console.log('The file saved to ', res.path());
         })
